@@ -67,6 +67,8 @@ namespace Oppimistehtava5_2
 
             }
 
+            showOrders();
+
             /*
             var context = new ShopContext();
              * 
@@ -83,6 +85,24 @@ namespace Oppimistehtava5_2
                 .Where(c => c.Name.Contains("something"))
                 .OrderBy(c => c.Name);
                 */
+        }
+        private void showOrders()
+        {
+            this.orderView.Items.Clear();
+            using (ShopContext db = new ShopContext())
+            {
+                foreach (var item in db.Orders)
+                {
+                    string rivi = $"Tilaus {item.Id} tilattu {item.Ordered}";
+                    this.orderView.Items.Add(rivi);
+                }
+            }
+        }
+
+        private void orderView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Joku tilaus on valittu. Pitäisi näyttää tilauksen tiedot.
+            var selectedOrder = this.orderView.SelectedItem as Order;
         }
     }
 }

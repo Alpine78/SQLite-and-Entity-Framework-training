@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oppimistehtava5_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Entity Framework test" Height="450" Width="800">
+    
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="ordersPanel" Margin="5">
+        <Label Content="Tilaukset" Grid.Column="0" Grid.Row="0"></Label>
+        <ListView x:Name="orderView" Grid.RowSpan="2" SelectionChanged="orderView_SelectionChanged"></ListView>
+        </StackPanel>
+        
+        <StackPanel x:Name="customerPanel" Grid.Column="1" Grid.Row="0" Margin="5">
+        <Label Content="Asiakas"></Label>
+            <TextBox x:Name="customerNameTB">sdfsdf</TextBox>
+            <TextBox x:Name="customerAddressTB">Osoite</TextBox>
+        </StackPanel>
+
+        <StackPanel x:Name="orderDetailsPanel" Grid.Column="1" Grid.Row="1" Margin="5">
+            <Label Content="Tilauksen tiedot"></Label>
+            <ListView x:Name="orderDetailsView"></ListView>
+            <TextBox x:Name="total">Yhteensä</TextBox>
+        </StackPanel>
         
     </Grid>
 </Window>
