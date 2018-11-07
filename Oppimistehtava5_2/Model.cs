@@ -27,10 +27,20 @@ namespace Oppimistehtava5_2
         // Otin tilauksen nimen pois.
         // Oliko tehtävänannossa tarkoitus, että tämä
         // nimikenttä viittaa tilaajaan?
+
+        // SQLite-kannassa ei voinut suoraan tehdä alter tablea,
+        // joten vahingon jälkeen tein copy-pastella projektin uudelleen.
         public DateTime Ordered { get; set; }
         public OrderStatus Status { get; set; }
         public IList<OrderRow> OrderRows { get; set; }
         public Customer Customer { get; set; }
+
+        public override string ToString()
+        {
+            //var status = 
+            string orderText = $"Tilaus {Id}: {Ordered} ({Status})";
+            return orderText;
+        }
     }
 
     public class OrderRow
@@ -55,13 +65,18 @@ namespace Oppimistehtava5_2
         public string Name { get; set; }
         public string Address { get; set; }
         public IList<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 
     public enum OrderStatus
     {
-        Orderd = 1,
-        Paid = 2,
-        Shipped = 3,
-        Returned = 4
+        Tilattu = 1,
+        Maksettu = 2,
+        Toimitettu = 3,
+        Palautettu = 4
     }
 }
